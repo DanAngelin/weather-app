@@ -4,10 +4,17 @@
 
 const keyApi = 'e3e59ccb8a47bc1f943eaf0baa3ce684';
 
-const getWeatherApp = async querry => {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=bucharest&units=metric&appid=${keyApi}`);
+const getWeatherApp = async weathercity => {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${weathercity}&units=metric&appid=${keyApi}`);
+    if(response.status == 404) {
+        document.querySelector('.not-found').style.display = 'block'
+    } else {
+        document.querySelector('.not-found').style.display = 'none'
+    }
+
+
     const wheaterApp = await response.json();
-    console.log(wheaterApp);
+    console.log(wheaterApp, weathercity);
 
     try {
 
@@ -16,7 +23,6 @@ const getWeatherApp = async querry => {
             main: {temp, temp_min, temp_max, feels_like, humidity, pressure},
             weather: [{main: description, icon}], wind: {speed},
             dt, timezone} = wheaterApp;
-            console.log(timezone)
 
         // City
         document.querySelector('.city-name').innerText = `Weather in ${city}, ${country}`;
@@ -44,7 +50,6 @@ const getWeatherApp = async querry => {
         const timezoneInMinutes = timezone / 60;
         const currentTime = moment().utcOffset(timezoneInMinutes).format("LLL");
         document.querySelector('.time').innerText = `${currentTime}`;
-        console.log(currentTime)
 
         // Sunrise - Sunset
         const sunriseTime = moment.unix(sunrise).utcOffset(timezoneInMinutes).format('LT');
@@ -52,9 +57,30 @@ const getWeatherApp = async querry => {
         document.querySelector('.sunrise p').innerText = `${sunriseTime}`;
         document.querySelector('.sunset p').innerText = `${sunsetTime}`;
 
+
     } catch (error) {
         console.log(error);
     }
 }
+            // Default city
+            getWeatherApp('Bucharest');
 
-getWeatherApp();
+
+            // BTN SEARCH
+            const btnSearch = document.querySelector('.btn-src');
+            const getValueSrc = () => {
+            let inputValueSrc = document.querySelector('.input-src').value;
+            return inputValueSrc;
+            }
+
+            btnSearch.addEventListener('click', () => getWeatherApp(getValueSrc()));
+            console.log(getWeatherApp(getValueSrc()))
+
+            // Enter key event input
+            let inputEnter = document.querySelector('.input-src');
+            inputEnter.addEventListener("keyup", (event) => {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    btnSearch.click();
+                }
+            });
