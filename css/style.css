@@ -1,104 +1,109 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: #fff;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
 }
 
 body {
-    background: url(../img/bg.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    min-width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.card-app {
-    margin: 0 auto;
-    padding: 1rem;
-    max-width: 700px;
-    position: relative;
-    backdrop-filter: blur(5px) saturate(200%);
-    -webkit-backdrop-filter: blur(5px) saturate(200%);
-    background-color: rgba(7, 0, 0, 0.4);
-    border-radius: 12px;
-    border: 1px solid rgba(209, 213, 219, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 0.7rem;
+.card-app, .footer {
+  margin: 0 auto;
+  padding: 1rem;
+  max-width: 700px;
+  position: relative;
+  backdrop-filter: blur(5px) saturate(200%);
+  -webkit-backdrop-filter: blur(5px) saturate(200%);
+  background-color: rgba(7, 0, 0, 0.4);
+  border-radius: 12px;
+  border: 1px solid rgba(209, 213, 219, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0.5rem;
 }
 
 .weather {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    gap: 1em;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  gap: 1em;
 }
 
 .weather-desc {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .sunrise-sunset {
-    display: flex;
-    gap: 1em;
+  display: flex;
+  gap: 1em;
 }
 
-.sunrise-sunset img{
-    width: 3em;
+.sunrise-sunset img {
+  width: 3em;
 }
 
-.sunrise, .sunset {
-    display: flex;
-    align-items: center;
-    gap: 1em;
+.sunrise,
+.sunset {
+  display: flex;
+  align-items: center;
+  gap: 1em;
 }
 
 .main-weather img {
-    width: 35px;
+  width: 35px;
 }
 
 .main-weather {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .search {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .search input {
-    border-radius: 1rem;
-    padding: 0.4rem 3rem;
-    background: rgba(7, 0, 0, 0.5);
-    border: none;
-    font-size: 1rem;
+  border-radius: 1rem;
+  padding: 0.4rem 3rem;
+  background: rgba(7, 0, 0, 0.5);
+  border: none;
+  font-size: 1rem;
 }
 
 .btn-src img {
-    width: 3rem;
+  width: 3rem;
 }
 
 .btn-src {
-    background: transparent;
-    border: none;
-    cursor: pointer;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .not-found {
-    display: block;
-    position: realtive;
+  display: block;
+  position: realtive;
 }
