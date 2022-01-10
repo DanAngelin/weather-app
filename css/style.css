@@ -20,12 +20,11 @@ body {
 .card-app, .footer {
   margin: 0 auto;
   padding: 1rem;
-  max-width: 700px;
   position: relative;
   backdrop-filter: blur(5px) saturate(200%);
   -webkit-backdrop-filter: blur(5px) saturate(200%);
   background-color: rgba(7, 0, 0, 0.4);
-  border-radius: 12px;
+  border-radius: 0.75rem;
   border: 1px solid rgba(209, 213, 219, 0.3);
   display: flex;
   justify-content: center;
@@ -35,8 +34,8 @@ body {
 }
 
 .footer {
-    position: absolute;
     bottom: 0.5rem;
+    position: absolute;
 }
 
 .weather {
@@ -50,12 +49,12 @@ body {
 .weather-desc {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .sunrise-sunset {
   display: flex;
-  gap: 1em;
+  gap: 0.6rem;
 }
 
 .sunrise-sunset img {
@@ -70,7 +69,7 @@ body {
 }
 
 .main-weather img {
-  width: 35px;
+  width: 2.18rem;
 }
 
 .main-weather {
@@ -103,7 +102,34 @@ body {
   cursor: pointer;
 }
 
-.not-found {
-  display: block;
-  position: realtive;
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 480px),
+            screen and (max-height: 600px) {
+  .card-app {
+    width: 300px;
+    transform: translateY(-1%);
+  }
+
+  .search input {
+    width: 200px;
+    font-size: 1rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .search img {
+    width: 2.5rem;
+  }
+
+  .footer {
+    width: 300px;
+    padding: 0.5rem;
+    transform: translateY(0.4rem);
+    position: relative;
+  }
+
+  .footer p {
+    font-size: 0.8rem;
+  }
 }
