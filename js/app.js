@@ -1,16 +1,27 @@
-// I use API from openweathermap.org
+import { API_URL, API_KEY, API_ICON, IMG_BACKGROUND } from "./config.js";
 
-const keyApi = "e3e59ccb8a47bc1f943eaf0baa3ce684";
+// I use API from openweathermap.org
+// https://api.openweathermap.org/data/2.5/weather?q=${weathercity}&units=metric&appid=${keyApi}
+let latitude = "";
+let longitude = "";
+navigator.geolocation.getCurrentPosition(function(position) {
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+}, function() {
+  alert('test')
+});
+console.log(latitude, longitude)
 
 const getWeatherApp = async (weathercity) => {
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${weathercity}&units=metric&appid=${keyApi}`
+    `${API_URL}${weathercity}&units=metric&appid=${API_KEY}`
   );
-  if (response.status == 404) {
-    document.querySelector(".not-found").textContent = "No results found 😞!";
-  } else {
-    document.querySelector(".not-found").textContent = "";
-  }
+
+  // Status api not found
+  response.status === 404 ? 
+          document.querySelector(".not-found").textContent = "No results found 😞!"
+          :
+          document.querySelector(".not-found").textContent = null;
 
   const wheaterApp = await response.json();
 
@@ -55,7 +66,7 @@ const getWeatherApp = async (weathercity) => {
     document.querySelector(".humidity-p").textContent = `${humidity}%`;
     document.querySelector(".pressure-p").textContent = `${pressure} hPa`;
     document.querySelector(".wind-p").textContent = `${speed} m/s`;
-    document.querySelector(".icon").src = `http://openweathermap.org/img/wn/${icon}.png`;
+    document.querySelector(".icon").src = `${API_ICON}${icon}.png`;
 
     // Timezone
     // I use this method from
@@ -78,7 +89,7 @@ const getWeatherApp = async (weathercity) => {
 
     // Background Change by City or Country
 
-    document.querySelector("body").style.backgroundImage = `url('https://source.unsplash.com/1600x900/?${weathercity} ')`;
+    document.querySelector("body").style.backgroundImage = `url('${IMG_BACKGROUND}${weathercity}')`;
   } catch (error) {
     console.log(error);
   }
